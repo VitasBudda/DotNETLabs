@@ -1,0 +1,48 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Persons";
+}
+
+<div class="text-center">
+    <h5 class="display-4">Persons</h5>
+    <p class="text-left">
+        <a asp-page="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Surname</th>
+                <th>City</th>
+                <th>Street</th>
+                <th>House</th>
+                <th>Apartament</th>
+                <th>Passport Seria</th>
+                <th>Passport Number</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var person in Model.Persons)
+            {
+                <tr>
+                    <td>@person.LastName</td>
+                    <td>@person.FirstName</td>
+                    <td>@person.Surname</td>
+                    <td>@person.Address.City</td>
+                    <td>@person.Address.Street</td>
+                    <td>@person.Address.HouseNumber</td>
+                    <td>@person.Address.ApartmentNumber</td>
+                    <td>@person.Passport.Seria</td>
+                    <td>@person.Passport.Number</td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@person.Id">Edit</a> |
+                        <a asp-page="./Delete" asp-route-id="@person.Id">Delete</a>
+                    </td>
+                </tr>  
+            }
+        </tbody>
+    </table>
+</div>

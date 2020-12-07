@@ -1,0 +1,80 @@
+﻿@page "{id:int?}"
+@model RazorPagesBank.Pages.Persons.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Person</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Person.Id"/>
+            <div class="form-group">
+                <label asp-for="Person.LastName" class="control-label">Last Name</label>
+                <input asp-for="Person.LastName" class="form-control"/>
+                <span asp-validation-for="Person.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Person.FirstName" class="control-label">First Name</label>
+                <input asp-for="Person.FirstName" class="form-control"/>
+                <span asp-validation-for="Person.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Person.Surname" class="control-label">Surname</label>
+                <input asp-for="Person.Surname" class="form-control"/>
+                <span asp-validation-for="Person.Surname" class="text-danger"></span>
+            </div>
+            
+            <h4>Address</h4>
+            <div class="form-group">
+                <label asp-for="Person.Address.City" class="control-label">City</label>
+                <input asp-for="Person.Address.City" class="form-control"/>
+                <span asp-validation-for="Person.Address.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Person.Address.Street" class="control-label">Street</label>
+                <input asp-for="Person.Address.Street" class="form-control"/>
+                <span asp-validation-for="Person.Address.Street" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Person.Address.HouseNumber" class="control-label">House</label>
+                <input asp-for="Person.Address.HouseNumber" class="form-control"/>
+                <span asp-validation-for="Person.Address.HouseNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Person.Address.ApartmentNumber" class="control-label">Apartament</label>
+                <input asp-for="Person.Address.ApartmentNumber" class="form-control"/>
+                <span asp-validation-for="Person.Address.ApartmentNumber" class="text-danger"></span>
+            </div>
+            
+            <h4>Passport</h4>
+            <div class="form-group">
+                <label asp-for="Person.Passport.Seria" class="control-label">Seria</label>
+                <input asp-for="Person.Passport.Seria" class="form-control"/>
+                <span asp-validation-for="Person.Passport.Seria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Person.Passport.Number" class="control-label">Number</label>
+                <input asp-for="Person.Passport.Number" class="form-control"/>
+                <span asp-validation-for="Person.Passport.Number" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Edit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

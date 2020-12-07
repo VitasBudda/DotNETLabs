@@ -1,0 +1,55 @@
+﻿@page "{id:int?}"
+@model RazorPagesBank.Pages.Visits.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Visit</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Visit.Id"/>
+            <div class="form-group">
+                <label asp-for="Visit.Date" class="control-label"></label>
+                <input asp-for="Visit.Date" class="form-control"/>
+                <span asp-validation-for="Visit.Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Visit.Sum" class="control-label"></label>
+                <input asp-for="Visit.Sum" class="form-control"/>
+                <span asp-validation-for="Visit.Sum" class="text-danger"></span>
+            </div>
+                
+            <div class="form-group">
+                <label class="control-label col-md-2" asp-for="Visit.Type">Type</label>
+                <div class="col-md-10">
+                    <select asp-for="Visit.TypeId" asp-items="Model.Types"></select>
+                </div>
+            </div>
+                            
+            <div class="form-group">
+                <label class="control-label col-md-2" asp-for="Visit.Person">Person</label>
+                <div class="col-md-10">
+                    <select asp-for="Visit.PersonId" asp-items="Model.Persons"></select>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Edit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

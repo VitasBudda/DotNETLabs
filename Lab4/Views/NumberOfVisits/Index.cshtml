@@ -1,0 +1,23 @@
+﻿@model List<Visit>
+
+<div class="text-center">
+    <h1 class="display-4">Number of Visits</h1>
+
+    <table class="table">
+        <tr>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Surname</th>
+            <th>Visits</th>
+        </tr>
+        @foreach (var visit in Model.GroupBy(v => v.Person))
+        {
+            <tr>
+                <td>@visit.Key.LastName</td>
+                <td>@visit.Key.FirstName</td>
+                <td>@visit.Key.Surname</td>
+                <td>@visit.Count()</td>
+            </tr>
+        }
+    </table>
+</div>

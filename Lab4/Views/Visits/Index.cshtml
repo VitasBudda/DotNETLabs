@@ -1,0 +1,35 @@
+﻿@model List<Visit>
+
+<div class="text-center">
+    <h1 class="display-4">Visits</h1>
+
+    <p class="text-left">
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <tr>
+            <th>Date</th>
+            <th>Sum</th>
+            <th>Type</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Surname</th>
+            <th>Action</th>
+        </tr>
+        @foreach (var visit in Model)
+        {
+            <tr>
+                <td>@visit.Date</td>
+                <td>@visit.Sum</td>
+                <td>@visit.Type.Name</td>
+                <td>@visit.Person.LastName</td>
+                <td>@visit.Person.FirstName</td>
+                <td>@visit.Person.Surname</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@visit.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@visit.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

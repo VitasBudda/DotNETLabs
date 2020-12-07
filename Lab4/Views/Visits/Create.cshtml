@@ -1,0 +1,55 @@
+@model MvcBank.Models.Visit
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div>
+    <h1 class="text-center">Create</h1>
+
+    <hr/>
+    <h4>Visit</h4>
+    
+    <div class="class-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id"/>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control"/>
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sum" class="control-label"></label>
+                <input asp-for="Sum" class="form-control"/>
+                <span asp-validation-for="Sum" class="text-danger"></span>
+            </div>
+                
+            <div class="form-group">
+                <label class="control-label col-md-2" asp-for="Type">Type</label>
+                <div class="col-md-10">
+                    @Html.DropDownList("TypeId", String.Empty)
+                </div>
+            </div>
+                
+            <div class="form-group">
+                <label class="control-label col-md-2" asp-for="Person">Person</label>
+                <div class="col-md-10">
+                    @Html.DropDownList("PersonId", String.Empty)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+    
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

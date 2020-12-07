@@ -1,0 +1,30 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Number of Visits";
+}
+
+<div class="text-center">
+    <h5 class="display-4">Number of Visits</h5>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Surname</th>
+                <th>Number of Visits</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var visit in Model.Visits.GroupBy(p => p.Person))
+            {
+                <tr>
+                    <td>@visit.Key.LastName</td>
+                    <td>@visit.Key.FirstName</td>
+                    <td>@visit.Key.Surname</td>
+                    <td>@visit.Count()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
